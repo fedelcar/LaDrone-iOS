@@ -30,6 +30,8 @@ typedef enum {
 @property (nonatomic, assign) int currentDownloadIndex; // from 1 to nbMaxDownload
 @property (nonatomic, assign) eAUDIO_STATE audioState;
 
+@property (nonatomic) BOOL running;
+
 @property (nonatomic, strong) IBOutlet JSVideoView *videoView;
 @property (nonatomic, strong) IBOutlet UILabel *batteryLabel;
 
@@ -111,23 +113,7 @@ typedef enum {
     UIImage *image = [UIImage imageWithData:imgData];
     DroneCommand command = [[[QRScannerService alloc] init] scanAction:image];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        if (command == Forward) {
-            [self forwardTouchDown:nil];
-            [NSThread sleepForTimeInterval:1.0f];
-            [self forwardTouchUp:nil];
-        } else if (command == Backward) {
-            [self backwardTouchDown:nil];
-            [NSThread sleepForTimeInterval:1.0f];
-            [self backwardTouchUp:nil];
-        } else if (command == TurnLeft) {
-            [self turnLeftTouchDown:nil];
-            [NSThread sleepForTimeInterval:1.0f];
-            [self turnLeftTouchUp:nil];
-        } else if (command == TurnRight) {
-            [self turnRightTouchDown:nil];
-            [NSThread sleepForTimeInterval:1.0f];
-            [self turnRightTouchUp:nil];
-        }
+        [self handleCommand:command];
     });
     return [_videoView displayFrame:frame];
 }
@@ -163,50 +149,60 @@ typedef enum {
     return true;
 }
 
-#pragma mark buttons click
-
-- (IBAction)takePictureClicked:(id)sender {
-    [_jsDrone takePicture];
+- (void)handleCommand:(DroneCommand)command {
+    if (!_running && command != Unknown) {
+        _running = YES;
+        switch (command) {
+            case Forward:
+                [self doForward];
+                _running = NO;
+                break;
+            case TurnLeft:
+                [self doTurnLeft];
+                _running = NO;
+                break;
+            case TurnRight:
+                [self doTurnRight];
+                _running = NO;
+                break;
+            case Fire:
+            case Repeat4:
+                for (int i = 0; i < 4; i++) {
+                    [self doForward];
+                }
+                _running = NO;
+            case Function1:
+            default:
+                break;
+        }
+    }
 }
 
-- (IBAction)turnLeftTouchDown:(id)sender {
+
+// Drone Actions
+
+- (void)doForward {
+    [_jsDrone setSpeed:25];
     [_jsDrone setFlag:1];
-    [_jsDrone setTurn:-50];
+    [NSThread sleepForTimeInterval:1.0f];
+    [_jsDrone setFlag:0];
+    [_jsDrone setSpeed:0];
 }
 
-- (IBAction)turnRightTouchDown:(id)sender {
+- (void)doTurnRight {
+    [_jsDrone setTurn:50/4.0];
     [_jsDrone setFlag:1];
-    [_jsDrone setTurn:50];
-}
-
-- (IBAction)turnLeftTouchUp:(id)sender {
+    [NSThread sleepForTimeInterval:1.0f];
     [_jsDrone setFlag:0];
     [_jsDrone setTurn:0];
 }
 
-- (IBAction)turnRightTouchUp:(id)sender {
+- (void)doTurnLeft {
+    [_jsDrone setTurn:-50/4.0];
+    [_jsDrone setFlag:1];
+    [NSThread sleepForTimeInterval:1.0f];
     [_jsDrone setFlag:0];
     [_jsDrone setTurn:0];
-}
-
-- (IBAction)forwardTouchDown:(id)sender {
-    [_jsDrone setFlag:1];
-    [_jsDrone setSpeed:50];
-}
-
-- (IBAction)backwardTouchDown:(id)sender {
-    [_jsDrone setFlag:1];
-    [_jsDrone setSpeed:-50];
-}
-
-- (IBAction)forwardTouchUp:(id)sender {
-    [_jsDrone setFlag:0];
-    [_jsDrone setSpeed:0];
-}
-
-- (IBAction)backwardTouchUp:(id)sender {
-    [_jsDrone setFlag:0];
-    [_jsDrone setSpeed:0];
 }
 
 @end
