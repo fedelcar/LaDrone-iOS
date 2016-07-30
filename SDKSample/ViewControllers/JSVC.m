@@ -166,6 +166,17 @@ typedef enum {
                 _running = NO;
                 break;
             case Fire:
+                [self doForward];
+                [NSThread sleepForTimeInterval:0.5f];
+                [self doForward];
+                [NSThread sleepForTimeInterval:0.5f];
+                [self doForward];
+                [NSThread sleepForTimeInterval:0.5f];
+                [self doTurnRight];
+                [NSThread sleepForTimeInterval:0.5f];
+                [self doForward];
+                [NSThread sleepForTimeInterval:0.5f];
+                [self doForward];
             case Repeat4:
                 for (int i = 0; i < 4; i++) {
                     [self doForward];
@@ -185,8 +196,8 @@ typedef enum {
     [_jsDrone setSpeed:25];
     [_jsDrone setFlag:1];
     [NSThread sleepForTimeInterval:1.0f];
-    [_jsDrone setFlag:0];
     [_jsDrone setSpeed:0];
+    [_jsDrone setFlag:0];
 }
 
 - (void)doTurnRight {
