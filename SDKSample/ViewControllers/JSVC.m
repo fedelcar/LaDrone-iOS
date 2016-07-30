@@ -11,6 +11,7 @@
 
 #import "AudioStreamAUBackend.h"
 #import "QRScannerService.h"
+#import "UIImageProvider.h"
 
 typedef enum {
     AUDIO_STATE_MUTE = 0,
@@ -34,8 +35,6 @@ typedef enum {
 
 @property (nonatomic, strong) IBOutlet JSVideoView *videoView;
 @property (nonatomic, strong) IBOutlet UILabel *batteryLabel;
-
-@property (nonatomic, strong) IBOutlet UIImageView * mapImageView;
 @property (nonatomic, strong) IBOutlet UIImageView * commandImageView;
 
 @end
@@ -117,6 +116,7 @@ typedef enum {
     DroneCommand command = [[[QRScannerService alloc] init] scanAction:image];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         [self handleCommand:command];
+        [self handleCommandImageView:command];
     });
     return [_videoView displayFrame:frame];
 }
@@ -181,6 +181,18 @@ typedef enum {
     }
 }
 
+- (void)handleCommandImageView:(DroneCommand)command {
+    if (command == Unknown) {
+        return;
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.commandImageView.image = [UIImageProvider imageForCommand:command];
+        self.commandImageView.alpha = 1.0;
+        [UIView animateWithDuration:3.0 delay:0.0 options:0 animations:^{
+            self.commandImageView.alpha = 0.0f;
+        } completion:nil];
+    });
+}
 
 // Drone Actions
 
