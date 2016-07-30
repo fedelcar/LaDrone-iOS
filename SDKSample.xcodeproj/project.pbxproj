@@ -230,6 +230,8 @@
 		E19907311D4D274A006045B9 /* ZXMultiFormatReader.m in Sources */ = {isa = PBXBuildFile; fileRef = E19906541D4D274A006045B9 /* ZXMultiFormatReader.m */; };
 		E19907321D4D274A006045B9 /* ZXMultiFormatWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = E19906561D4D274A006045B9 /* ZXMultiFormatWriter.m */; };
 		E19907351D4D2751006045B9 /* QRScannerService.m in Sources */ = {isa = PBXBuildFile; fileRef = E19907341D4D2751006045B9 /* QRScannerService.m */; };
+		E199073F1D4D35C6006045B9 /* InitialScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E199073E1D4D35C6006045B9 /* InitialScreen.storyboard */; };
+		E19907421D4D35DA006045B9 /* InitialScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E19907411D4D35DA006045B9 /* InitialScreenViewController.m */; };
 		F828FA6A1C8604150075E867 /* JSDrone.m in Sources */ = {isa = PBXBuildFile; fileRef = F828FA691C8604150075E867 /* JSDrone.m */; };
 		F828FA701C8608B90075E867 /* JSVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F828FA6F1C8608B90075E867 /* JSVC.m */; };
 		F828FA731C860BEB0075E867 /* JSVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = F828FA721C860BEB0075E867 /* JSVideoView.m */; };
@@ -707,6 +709,9 @@
 		E19906561D4D274A006045B9 /* ZXMultiFormatWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXMultiFormatWriter.m; sourceTree = "<group>"; };
 		E19907331D4D2751006045B9 /* QRScannerService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRScannerService.h; sourceTree = "<group>"; };
 		E19907341D4D2751006045B9 /* QRScannerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRScannerService.m; sourceTree = "<group>"; };
+		E199073E1D4D35C6006045B9 /* InitialScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = InitialScreen.storyboard; path = InitialScreen/InitialScreen.storyboard; sourceTree = "<group>"; };
+		E19907401D4D35DA006045B9 /* InitialScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = InitialScreenViewController.h; path = InitialScreen/InitialScreenViewController.h; sourceTree = "<group>"; };
+		E19907411D4D35DA006045B9 /* InitialScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = InitialScreenViewController.m; path = InitialScreen/InitialScreenViewController.m; sourceTree = "<group>"; };
 		F828FA681C8604150075E867 /* JSDrone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSDrone.h; path = Drones/JSDrone.h; sourceTree = "<group>"; };
 		F828FA691C8604150075E867 /* JSDrone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSDrone.m; path = Drones/JSDrone.m; sourceTree = "<group>"; };
 		F828FA6E1C8608B90075E867 /* JSVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSVC.h; path = ViewControllers/JSVC.h; sourceTree = "<group>"; };
@@ -1469,6 +1474,16 @@
 			path = detector;
 			sourceTree = "<group>";
 		};
+		E199073D1D4D35A1006045B9 /* InitialScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E199073E1D4D35C6006045B9 /* InitialScreen.storyboard */,
+				E19907401D4D35DA006045B9 /* InitialScreenViewController.h */,
+				E19907411D4D35DA006045B9 /* InitialScreenViewController.m */,
+			);
+			name = InitialScreen;
+			sourceTree = "<group>";
+		};
 		F8B03D7A1C7DA4E900149B4F = {
 			isa = PBXGroup;
 			children = (
@@ -1488,6 +1503,7 @@
 		F8B03D851C7DA4E900149B4F /* SDKSample */ = {
 			isa = PBXGroup;
 			children = (
+				E199073D1D4D35A1006045B9 /* InitialScreen */,
 				E199046D1D4D2749006045B9 /* ZXingObjC */,
 				1D36FF831D185164005CAADC /* Audio */,
 				F8B03DBC1C7DA7CE00149B4F /* Views */,
@@ -1616,6 +1632,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8B03D961C7DA4E900149B4F /* LaunchScreen.storyboard in Resources */,
+				E199073F1D4D35C6006045B9 /* InitialScreen.storyboard in Resources */,
 				F8B03D931C7DA4E900149B4F /* Assets.xcassets in Resources */,
 				F8B03D911C7DA4E900149B4F /* Main.storyboard in Resources */,
 			);
@@ -1693,6 +1710,7 @@
 				E199072F1D4D274A006045B9 /* ZXQRCodeReader.m in Sources */,
 				E19906EC1D4D274A006045B9 /* ZXEAN13Writer.m in Sources */,
 				E19906BA1D4D274A006045B9 /* ZXDataMatrixHighLevelEncoder.m in Sources */,
+				E19907421D4D35DA006045B9 /* InitialScreenViewController.m in Sources */,
 				E199071A1D4D274A006045B9 /* ZXQRCodeDecodedBitStreamParser.m in Sources */,
 				E199071D1D4D274A006045B9 /* ZXQRCodeErrorCorrectionLevel.m in Sources */,
 				E19907021D4D274A006045B9 /* ZXPDF417BarcodeValue.m in Sources */,
