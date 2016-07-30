@@ -30,6 +30,8 @@ typedef enum {
 @property (nonatomic, assign) int currentDownloadIndex; // from 1 to nbMaxDownload
 @property (nonatomic, assign) eAUDIO_STATE audioState;
 
+@property (nonatomic) BOOL running;
+
 @property (nonatomic, strong) IBOutlet JSVideoView *videoView;
 @property (nonatomic, strong) IBOutlet UILabel *batteryLabel;
 
@@ -151,51 +153,55 @@ typedef enum {
 }
 
 - (void)handleCommand:(DroneCommand)command {
-    switch (command) {
-        case Forward:
-            [self doForward];
-            break;
-        case TurnLeft:
-            [self doTurnLeft];
-            break;
-        case TurnRight:
-            [self doTurnRight];
-            break;
-        case Fire:
-            break;
-        case Repeat4:
-            for (int i = 0; i < 4; i++) {
+    if (!_running && command != Unknown) {
+        _running = YES;
+        switch (command) {
+            case Forward:
                 [self doForward];
-            }
-            break;
-        case Function1:
-            break;
-        default:
-            break;
+                _running = NO;
+                break;
+            case TurnLeft:
+                [self doTurnLeft];
+                _running = NO;
+                break;
+            case TurnRight:
+                [self doTurnRight];
+                _running = NO;
+                break;
+            case Fire:
+            case Repeat4:
+                for (int i = 0; i < 4; i++) {
+                    [self doForward];
+                }
+                _running = NO;
+            case Function1:
+            default:
+                break;
+        }
     }
 }
 
 
 // Drone Actions
 
-- (void)doForward{
-    [_jsDrone setSpeed:50];
+- (void)doForward {
+    [_jsDrone setSpeed:25];
     [_jsDrone setFlag:1];
     [NSThread sleepForTimeInterval:1.0f];
     [_jsDrone setFlag:0];
     [_jsDrone setSpeed:0];
 }
 
-- (void)doTurnRight{
-    [_jsDrone setTurn:50];
+- (void)doTurnRight {
+    [_jsDrone setTurn:50/4.0];
     [_jsDrone setFlag:1];
     [NSThread sleepForTimeInterval:1.0f];
     [_jsDrone setFlag:0];
     [_jsDrone setTurn:0];
 }
 
-- (void)doTurnLeft{
-    [_jsDrone setTurn:-50];
+- (void)doTurnLeft {
+    [_jsDrone setTurn:-50/4.0];
     [_jsDrone setFlag:1];
     [NSThread sleepForTimeInterval:1.0f];
     [_jsDrone setFlag:0];
