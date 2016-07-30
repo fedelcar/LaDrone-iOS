@@ -7,10 +7,7 @@
 #import "DroneDiscoverer.h"
 #import <libARDiscovery/ARDISCOVERY_BonjourDiscovery.h>
 
-#import "BebopVC.h"
 #import "JSVC.h"
-#import "MiniDroneVC.h"
-#import "SkyControllerVC.h"
 
 #define BEBOP_SEGUE         @"bebopSegue"
 #define JS_SEGUE            @"jsSegue"
@@ -59,21 +56,21 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if(([segue.identifier isEqualToString:BEBOP_SEGUE]) && (_selectedService != nil)) {
-        BebopVC *bebopVC = (BebopVC*)[segue destinationViewController];
+//        BebopVC *bebopVC = (BebopVC*)[segue destinationViewController];
         
-        [bebopVC setService:_selectedService];
+//        [bebopVC setService:_selectedService];
     } else if (([segue.identifier isEqualToString:JS_SEGUE]) && (_selectedService != nil)) {
         JSVC *jsVC = (JSVC*)[segue destinationViewController];
         
         [jsVC setService:_selectedService];
-    } else if (([segue.identifier isEqualToString:MINIDRONE_SEGUE]) && (_selectedService != nil)) {
-        MiniDroneVC *miniDroneVC = (MiniDroneVC*)[segue destinationViewController];
-        
-        [miniDroneVC setService:_selectedService];
-    } else if (([segue.identifier isEqualToString:SKYCONTROLLER_SEGUE]) && (_selectedService != nil)) {
-        SkyControllerVC *skyControllerVC = (SkyControllerVC*)[segue destinationViewController];
-        
-        [skyControllerVC setService:_selectedService];
+//    } else if (([segue.identifier isEqualToString:MINIDRONE_SEGUE]) && (_selectedService != nil)) {
+//        MiniDroneVC *miniDroneVC = (MiniDroneVC*)[segue destinationViewController];
+//        
+//        [miniDroneVC setService:_selectedService];
+//    } else if (([segue.identifier isEqualToString:SKYCONTROLLER_SEGUE]) && (_selectedService != nil)) {
+//        SkyControllerVC *skyControllerVC = (SkyControllerVC*)[segue destinationViewController];
+//        
+//        [skyControllerVC setService:_selectedService];
     }
 }
 

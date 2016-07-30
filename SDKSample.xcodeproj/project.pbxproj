@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1D36FF8F1D185277005CAADC /* AudioStreamAUBackend.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D36FF8E1D185277005CAADC /* AudioStreamAUBackend.m */; };
+		31C3F58F1D4D2A5300A14C82 /* PhotoVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 31C3F58D1D4D2A5300A14C82 /* PhotoVC.m */; };
 		E19906571D4D274A006045B9 /* ZXAztecDecoder.m in Sources */ = {isa = PBXBuildFile; fileRef = E19904711D4D2749006045B9 /* ZXAztecDecoder.m */; };
 		E19906581D4D274A006045B9 /* ZXAztecDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = E19904741D4D2749006045B9 /* ZXAztecDetector.m */; };
 		E19906591D4D274A006045B9 /* ZXAztecBinaryShiftToken.m in Sources */ = {isa = PBXBuildFile; fileRef = E19904771D4D2749006045B9 /* ZXAztecBinaryShiftToken.m */; };
@@ -232,11 +233,6 @@
 		F828FA6A1C8604150075E867 /* JSDrone.m in Sources */ = {isa = PBXBuildFile; fileRef = F828FA691C8604150075E867 /* JSDrone.m */; };
 		F828FA701C8608B90075E867 /* JSVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F828FA6F1C8608B90075E867 /* JSVC.m */; };
 		F828FA731C860BEB0075E867 /* JSVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = F828FA721C860BEB0075E867 /* JSVideoView.m */; };
-		F828FA761C86EB630075E867 /* MiniDrone.m in Sources */ = {isa = PBXBuildFile; fileRef = F828FA751C86EB620075E867 /* MiniDrone.m */; };
-		F828FA791C86F14C0075E867 /* MiniDroneVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F828FA781C86F14C0075E867 /* MiniDroneVC.m */; };
-		F828FA7D1C8729860075E867 /* SkyController.m in Sources */ = {isa = PBXBuildFile; fileRef = F828FA7C1C8729860075E867 /* SkyController.m */; };
-		F828FA801C8750070075E867 /* SkyControllerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F828FA7F1C8750070075E867 /* SkyControllerVC.m */; };
-		F8838E571C80874900B49443 /* BebopVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = F8838E561C80874900B49443 /* BebopVideoView.m */; };
 		F8838E691C80A51300B49443 /* SDCardModule.m in Sources */ = {isa = PBXBuildFile; fileRef = F8838E681C80A51200B49443 /* SDCardModule.m */; };
 		F8B03D881C7DA4E900149B4F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B03D871C7DA4E900149B4F /* main.m */; };
 		F8B03D8B1C7DA4E900149B4F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B03D8A1C7DA4E900149B4F /* AppDelegate.m */; };
@@ -244,14 +240,14 @@
 		F8B03D931C7DA4E900149B4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8B03D921C7DA4E900149B4F /* Assets.xcassets */; };
 		F8B03D961C7DA4E900149B4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8B03D941C7DA4E900149B4F /* LaunchScreen.storyboard */; };
 		F8B03DBF1C7DA82600149B4F /* DeviceListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B03DBE1C7DA82600149B4F /* DeviceListVC.m */; };
-		F8B03DC21C7DA90900149B4F /* BebopVC.m in Sources */ = {isa = PBXBuildFile; fileRef = F8B03DC11C7DA90900149B4F /* BebopVC.m */; };
 		F8F74D301C7DC7BE00DC5FA1 /* DroneDiscoverer.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F74D2F1C7DC7BE00DC5FA1 /* DroneDiscoverer.m */; };
-		F8F74D441C7DEAB700DC5FA1 /* BebopDrone.m in Sources */ = {isa = PBXBuildFile; fileRef = F8F74D431C7DEAB700DC5FA1 /* BebopDrone.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1D36FF8D1D185277005CAADC /* AudioStreamAUBackend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioStreamAUBackend.h; path = Audio/AudioStreamAUBackend.h; sourceTree = "<group>"; };
 		1D36FF8E1D185277005CAADC /* AudioStreamAUBackend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioStreamAUBackend.m; path = Audio/AudioStreamAUBackend.m; sourceTree = "<group>"; };
+		31C3F58C1D4D2A5300A14C82 /* PhotoVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhotoVC.h; path = ViewControllers/PhotoVC.h; sourceTree = "<group>"; };
+		31C3F58D1D4D2A5300A14C82 /* PhotoVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhotoVC.m; path = ViewControllers/PhotoVC.m; sourceTree = "<group>"; };
 		E19904701D4D2749006045B9 /* ZXAztecDecoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXAztecDecoder.h; sourceTree = "<group>"; };
 		E19904711D4D2749006045B9 /* ZXAztecDecoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXAztecDecoder.m; sourceTree = "<group>"; };
 		E19904731D4D2749006045B9 /* ZXAztecDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXAztecDetector.h; sourceTree = "<group>"; };
@@ -717,16 +713,6 @@
 		F828FA6F1C8608B90075E867 /* JSVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSVC.m; path = ViewControllers/JSVC.m; sourceTree = "<group>"; };
 		F828FA711C860BEB0075E867 /* JSVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSVideoView.h; path = Views/JSVideoView.h; sourceTree = "<group>"; };
 		F828FA721C860BEB0075E867 /* JSVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSVideoView.m; path = Views/JSVideoView.m; sourceTree = "<group>"; };
-		F828FA741C86EB620075E867 /* MiniDrone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniDrone.h; path = Drones/MiniDrone.h; sourceTree = "<group>"; };
-		F828FA751C86EB620075E867 /* MiniDrone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniDrone.m; path = Drones/MiniDrone.m; sourceTree = "<group>"; };
-		F828FA771C86F14C0075E867 /* MiniDroneVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniDroneVC.h; path = ViewControllers/MiniDroneVC.h; sourceTree = "<group>"; };
-		F828FA781C86F14C0075E867 /* MiniDroneVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniDroneVC.m; path = ViewControllers/MiniDroneVC.m; sourceTree = "<group>"; };
-		F828FA7B1C8729860075E867 /* SkyController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SkyController.h; path = Drones/SkyController.h; sourceTree = "<group>"; };
-		F828FA7C1C8729860075E867 /* SkyController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SkyController.m; path = Drones/SkyController.m; sourceTree = "<group>"; };
-		F828FA7E1C8750070075E867 /* SkyControllerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SkyControllerVC.h; path = ViewControllers/SkyControllerVC.h; sourceTree = "<group>"; };
-		F828FA7F1C8750070075E867 /* SkyControllerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SkyControllerVC.m; path = ViewControllers/SkyControllerVC.m; sourceTree = "<group>"; };
-		F8838E551C80874900B49443 /* BebopVideoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BebopVideoView.h; path = Views/BebopVideoView.h; sourceTree = "<group>"; };
-		F8838E561C80874900B49443 /* BebopVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BebopVideoView.m; path = Views/BebopVideoView.m; sourceTree = "<group>"; };
 		F8838E671C80A51200B49443 /* SDCardModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDCardModule.h; path = Drones/SDCardModule.h; sourceTree = "<group>"; };
 		F8838E681C80A51200B49443 /* SDCardModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDCardModule.m; path = Drones/SDCardModule.m; sourceTree = "<group>"; };
 		F8B03D831C7DA4E900149B4F /* SDKSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDKSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -739,12 +725,8 @@
 		F8B03D971C7DA4E900149B4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8B03DBD1C7DA82600149B4F /* DeviceListVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeviceListVC.h; path = ViewControllers/DeviceListVC.h; sourceTree = "<group>"; };
 		F8B03DBE1C7DA82600149B4F /* DeviceListVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeviceListVC.m; path = ViewControllers/DeviceListVC.m; sourceTree = "<group>"; };
-		F8B03DC01C7DA90900149B4F /* BebopVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BebopVC.h; path = ViewControllers/BebopVC.h; sourceTree = "<group>"; };
-		F8B03DC11C7DA90900149B4F /* BebopVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BebopVC.m; path = ViewControllers/BebopVC.m; sourceTree = "<group>"; };
 		F8F74D2E1C7DC7BE00DC5FA1 /* DroneDiscoverer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DroneDiscoverer.h; path = Discovery/DroneDiscoverer.h; sourceTree = "<group>"; };
 		F8F74D2F1C7DC7BE00DC5FA1 /* DroneDiscoverer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DroneDiscoverer.m; path = Discovery/DroneDiscoverer.m; sourceTree = "<group>"; };
-		F8F74D421C7DEAB700DC5FA1 /* BebopDrone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BebopDrone.h; path = Drones/BebopDrone.h; sourceTree = "<group>"; };
-		F8F74D431C7DEAB700DC5FA1 /* BebopDrone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BebopDrone.m; path = Drones/BebopDrone.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1536,16 +1518,12 @@
 		F8B03DB91C7DA7B500149B4F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				F828FA7E1C8750070075E867 /* SkyControllerVC.h */,
-				F828FA7F1C8750070075E867 /* SkyControllerVC.m */,
-				F828FA771C86F14C0075E867 /* MiniDroneVC.h */,
-				F828FA781C86F14C0075E867 /* MiniDroneVC.m */,
+				31C3F58C1D4D2A5300A14C82 /* PhotoVC.h */,
+				31C3F58D1D4D2A5300A14C82 /* PhotoVC.m */,
 				F828FA6E1C8608B90075E867 /* JSVC.h */,
 				F828FA6F1C8608B90075E867 /* JSVC.m */,
 				F8B03DBD1C7DA82600149B4F /* DeviceListVC.h */,
 				F8B03DBE1C7DA82600149B4F /* DeviceListVC.m */,
-				F8B03DC01C7DA90900149B4F /* BebopVC.h */,
-				F8B03DC11C7DA90900149B4F /* BebopVC.m */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -1553,14 +1531,8 @@
 		F8B03DBA1C7DA7BE00149B4F /* Drones */ = {
 			isa = PBXGroup;
 			children = (
-				F828FA7B1C8729860075E867 /* SkyController.h */,
-				F828FA7C1C8729860075E867 /* SkyController.m */,
-				F828FA741C86EB620075E867 /* MiniDrone.h */,
-				F828FA751C86EB620075E867 /* MiniDrone.m */,
 				F828FA681C8604150075E867 /* JSDrone.h */,
 				F828FA691C8604150075E867 /* JSDrone.m */,
-				F8F74D421C7DEAB700DC5FA1 /* BebopDrone.h */,
-				F8F74D431C7DEAB700DC5FA1 /* BebopDrone.m */,
 				F8838E671C80A51200B49443 /* SDCardModule.h */,
 				F8838E681C80A51200B49443 /* SDCardModule.m */,
 			);
@@ -1581,8 +1553,6 @@
 			children = (
 				F828FA711C860BEB0075E867 /* JSVideoView.h */,
 				F828FA721C860BEB0075E867 /* JSVideoView.m */,
-				F8838E551C80874900B49443 /* BebopVideoView.h */,
-				F8838E561C80874900B49443 /* BebopVideoView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1738,7 +1708,6 @@
 				E19906B41D4D274A006045B9 /* ZXDataMatrixBase256Encoder.m in Sources */,
 				E19906CD1D4D274A006045B9 /* ZXAI013x0xDecoder.m in Sources */,
 				E19906FB1D4D274A006045B9 /* ZXUPCEANReader.m in Sources */,
-				F8B03DC21C7DA90900149B4F /* BebopVC.m in Sources */,
 				E19906831D4D274A006045B9 /* ZXVINParsedResult.m in Sources */,
 				E19907111D4D274A006045B9 /* ZXPDF417ErrorCorrection.m in Sources */,
 				E199069A1D4D274A006045B9 /* ZXGlobalHistogramBinarizer.m in Sources */,
@@ -1752,7 +1721,6 @@
 				E19906D51D4D274A006045B9 /* ZXRSSExpandedDecodedInformation.m in Sources */,
 				E19906581D4D274A006045B9 /* ZXAztecDetector.m in Sources */,
 				E19907231D4D274A006045B9 /* ZXQRCodeDetector.m in Sources */,
-				F8F74D441C7DEAB700DC5FA1 /* BebopDrone.m in Sources */,
 				E19906901D4D274A006045B9 /* ZXReedSolomonEncoder.m in Sources */,
 				F828FA701C8608B90075E867 /* JSVC.m in Sources */,
 				E199065E1D4D274A006045B9 /* ZXAztecState.m in Sources */,
@@ -1783,11 +1751,9 @@
 				E19906B91D4D274A006045B9 /* ZXDataMatrixErrorCorrection.m in Sources */,
 				E19906C81D4D274A006045B9 /* ZXAI013103decoder.m in Sources */,
 				E19907151D4D274A006045B9 /* ZXPDF417ResultMetadata.m in Sources */,
-				F828FA761C86EB630075E867 /* MiniDrone.m in Sources */,
 				E19906D41D4D274A006045B9 /* ZXRSSExpandedDecodedChar.m in Sources */,
 				E19906971D4D274A006045B9 /* ZXDecoderResult.m in Sources */,
 				E199068B1D4D274A006045B9 /* ZXMonochromeRectangleDetector.m in Sources */,
-				F828FA791C86F14C0075E867 /* MiniDroneVC.m in Sources */,
 				E19906631D4D274A006045B9 /* ZXAbstractDoCoMoResultParser.m in Sources */,
 				E199067B1D4D274A006045B9 /* ZXTelParsedResult.m in Sources */,
 				E19906E11D4D274A006045B9 /* ZXRSSFinderPattern.m in Sources */,
@@ -1824,7 +1790,6 @@
 				E199065F1D4D274A006045B9 /* ZXAztecToken.m in Sources */,
 				E19906EA1D4D274A006045B9 /* ZXCode93Reader.m in Sources */,
 				E19906DF1D4D274A006045B9 /* ZXRSS14Reader.m in Sources */,
-				F828FA801C8750070075E867 /* SkyControllerVC.m in Sources */,
 				E19906821D4D274A006045B9 /* ZXVEventResultParser.m in Sources */,
 				E19907291D4D274A006045B9 /* ZXQRCodeEncoder.m in Sources */,
 				E19906FE1D4D274A006045B9 /* ZXModulusGF.m in Sources */,
@@ -1832,6 +1797,7 @@
 				E19906661D4D274A006045B9 /* ZXAddressBookParsedResult.m in Sources */,
 				E19906881D4D274A006045B9 /* ZXCGImageLuminanceSource.m in Sources */,
 				E19906CC1D4D274A006045B9 /* ZXAI013x0x1xDecoder.m in Sources */,
+				31C3F58F1D4D2A5300A14C82 /* PhotoVC.m in Sources */,
 				E19906E91D4D274A006045B9 /* ZXCode39Writer.m in Sources */,
 				E19906D11D4D274A006045B9 /* ZXAnyAIDecoder.m in Sources */,
 				E19907051D4D274A006045B9 /* ZXPDF417CodewordDecoder.m in Sources */,
@@ -1882,10 +1848,8 @@
 				E199071B1D4D274A006045B9 /* ZXQRCodeDecoder.m in Sources */,
 				E19906BD1D4D274A006045B9 /* ZXDataMatrixTextEncoder.m in Sources */,
 				E19906C01D4D274A006045B9 /* ZXDataMatrixWriter.m in Sources */,
-				F8838E571C80874900B49443 /* BebopVideoView.m in Sources */,
 				E199067F1D4D274A006045B9 /* ZXURIResultParser.m in Sources */,
 				E19907261D4D274A006045B9 /* ZXQRCodeFinderPatternInfo.m in Sources */,
-				F828FA7D1C8729860075E867 /* SkyController.m in Sources */,
 				E19906C61D4D274A006045B9 /* ZXGenericMultipleBarcodeReader.m in Sources */,
 				E19906A91D4D274A006045B9 /* ZXPlanarYUVLuminanceSource.m in Sources */,
 				E19906781D4D274A006045B9 /* ZXSMSParsedResult.m in Sources */,
