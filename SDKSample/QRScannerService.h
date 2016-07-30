@@ -9,8 +9,16 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+typedef enum {
+    TurnLeft,
+    TurnRight,
+    Forward,
+    Backward,
+    Unknown
+} DroneCommand;
+
 @interface QRScannerService : NSObject
 
-- (void)scanAction:(UIImage *)image;
+- (DroneCommand)scanAction:(UIImage *)image;
 
 @end
