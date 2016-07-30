@@ -33,6 +33,9 @@ typedef enum {
 @property (nonatomic, strong) IBOutlet JSVideoView *videoView;
 @property (nonatomic, strong) IBOutlet UILabel *batteryLabel;
 
+@property (nonatomic, strong) IBOutlet UIImageView * mapImageView;
+@property (nonatomic, strong) IBOutlet UIImageView * commandImageView;
+
 @end
 
 @implementation JSVC
