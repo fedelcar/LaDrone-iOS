@@ -10,6 +10,7 @@
 #import <AVFoundation/AVFoundation.h>
 
 #import "AudioStreamAUBackend.h"
+#import "QRScannerService.h"
 
 typedef enum {
     AUDIO_STATE_MUTE = 0,
@@ -31,10 +32,6 @@ typedef enum {
 
 @property (nonatomic, strong) IBOutlet JSVideoView *videoView;
 @property (nonatomic, strong) IBOutlet UILabel *batteryLabel;
-@property (nonatomic, strong) IBOutlet UIButton *downloadMediasBt;
-@property (nonatomic, strong) IBOutlet UIButton *audioBt;
-@property (nonatomic, strong) IBOutlet UILabel *audioLabel;
-@property (weak, nonatomic) IBOutlet UILabel *QRLabel;
 
 @end
 
@@ -85,47 +82,17 @@ typedef enum {
     });
 }
 
-- (void) updateView {
-    if ([_jsDrone hasInputAudioStream] || [_jsDrone hasOutputAudioStream]) {
-        [_audioBt setHidden:NO];
-        [_audioLabel setHidden:NO];
-    }
-}
-
-- (void) setAudioState:(eAUDIO_STATE) audioState {
-    _audioState = audioState;
-    switch (_audioState) {
-        case AUDIO_STATE_MUTE:
-            [_audioBt setTitle: @"MUTE" forState:UIControlStateNormal];
-            [_jsDrone setAudioStreamEnabledWithInput:NO output:NO];
-            break;
-        case AUDIO_STATE_INPUT:
-            [_audioBt setTitle: @"INPUT" forState:UIControlStateNormal];
-            [_jsDrone setAudioStreamEnabledWithInput:YES output:NO];
-            break;
-        case AUDIO_STATE_BIDIRECTIONAL:
-            [_audioBt setTitle: @"IN/OUTPUT" forState:UIControlStateNormal];
-            [_jsDrone setAudioStreamEnabledWithInput:YES output:YES];
-            break;
-    }
-}
-
 #pragma mark JSDroneDelegate
 -(void)jsDrone:(JSDrone *)jsDrone connectionDidChange:(eARCONTROLLER_DEVICE_STATE)state {
     switch (state) {
         case ARCONTROLLER_DEVICE_STATE_RUNNING:
             [_connectionAlertView dismissWithClickedButtonIndex:0 animated:TRUE];
-
-            [self updateView];
             break;
         case ARCONTROLLER_DEVICE_STATE_STOPPED:
             dispatch_semaphore_signal(_stateSem);
-            
             // Go back
             [self.navigationController popViewControllerAnimated:YES];
-            
             break;
-            
         default:
             break;
     }
@@ -140,6 +107,37 @@ typedef enum {
 }
 
 - (BOOL)jsDrone:(JSDrone*)jsDrone didReceiveFrame:(ARCONTROLLER_Frame_t*)frame {
+    NSData *imgData = [NSData dataWithBytes:frame->data length:frame->used];
+    UIImage *image = [UIImage imageWithData:imgData];
+    DroneCommand command = [[[QRScannerService alloc] init] scanAction:image];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//        if (command == Forward) {
+//            [self forwardTouchDown:nil];
+//            [NSThread sleepForTimeInterval:1.0f];
+//            [self forwardTouchUp:nil];
+//        } else if (command == Backward) {
+//            [self backwardTouchDown:nil];
+//            [NSThread sleepForTimeInterval:1.0f];
+//            [self backwardTouchUp:nil];
+//        } else if (command == TurnLeft) {
+//            [self turnLeftTouchDown:nil];
+//            [NSThread sleepForTimeInterval:1.0f];
+//            [self turnLeftTouchUp:nil];
+//        } else if (command == TurnRight) {
+//            [self turnRightTouchDown:nil];
+//            [NSThread sleepForTimeInterval:1.0f];
+//            [self turnRightTouchUp:nil];
+//        }
+        if (command != Unknown) {
+            [self turnLeftTouchDown:nil];
+            [NSThread sleepForTimeInterval:0.225f];
+            [self turnLeftTouchUp:nil];
+            [NSThread sleepForTimeInterval:1.0f];
+            [self forwardTouchDown:nil];
+            [NSThread sleepForTimeInterval:1.0f];
+            [self forwardTouchUp:nil];
+        }
+    });
     return [_videoView displayFrame:frame];
 }
 
@@ -174,108 +172,10 @@ typedef enum {
     return true;
 }
 
-- (void)jsDrone:(JSDrone*)jsDrone didFoundMatchingMedias:(NSUInteger)nbMedias {
-    _nbMaxDownload = nbMedias;
-    _currentDownloadIndex = 1;
-    
-    if (nbMedias > 0) {
-        [_downloadAlertController setMessage:@"Downloading medias"];
-        UIViewController *customVC = [[UIViewController alloc] init];
-        _downloadProgressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
-        [_downloadProgressView setProgress:0];
-        [customVC.view addSubview:_downloadProgressView];
-        
-        [customVC.view addConstraint:[NSLayoutConstraint
-                                      constraintWithItem:_downloadProgressView
-                                      attribute:NSLayoutAttributeCenterX
-                                      relatedBy:NSLayoutRelationEqual
-                                      toItem:customVC.view
-                                      attribute:NSLayoutAttributeCenterX
-                                      multiplier:1.0f
-                                      constant:0.0f]];
-        [customVC.view addConstraint:[NSLayoutConstraint
-                                      constraintWithItem:_downloadProgressView
-                                      attribute:NSLayoutAttributeBottom
-                                      relatedBy:NSLayoutRelationEqual
-                                      toItem:customVC.bottomLayoutGuide
-                                      attribute:NSLayoutAttributeTop
-                                      multiplier:1.0f
-                                      constant:-20.0f]];
-        
-        [_downloadAlertController setValue:customVC forKey:@"contentViewController"];
-    } else {
-        [_downloadAlertController dismissViewControllerAnimated:YES completion:^{
-            _downloadProgressView = nil;
-            _downloadAlertController = nil;
-        }];
-    }
-}
-
-- (void)jsDrone:(JSDrone*)jsDrone media:(NSString*)mediaName downloadDidProgress:(int)progress {
-    float completedProgress = ((_currentDownloadIndex - 1) / (float)_nbMaxDownload);
-    float currentProgress = (progress / 100.f) / (float)_nbMaxDownload;
-    [_downloadProgressView setProgress:(completedProgress + currentProgress)];
-}
-
-- (void)jsDrone:(JSDrone*)jsDrone mediaDownloadDidFinish:(NSString*)mediaName {
-    _currentDownloadIndex++;
-    
-    if (_currentDownloadIndex > _nbMaxDownload) {
-        [_downloadAlertController dismissViewControllerAnimated:YES completion:^{
-            _downloadProgressView = nil;
-            _downloadAlertController = nil;
-        }];
-        
-    }
-}
-
 #pragma mark buttons click
+
 - (IBAction)takePictureClicked:(id)sender {
     [_jsDrone takePicture];
-}
-
-- (IBAction)downloadMediasClicked:(id)sender {
-    [_downloadAlertController dismissViewControllerAnimated:YES completion:nil];
-    
-    _downloadAlertController = [UIAlertController alertControllerWithTitle:@"Download"
-                                                                   message:@"Fetching medias"
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    
-    UIAlertAction* cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel
-                                                         handler:^(UIAlertAction * action) {
-                                                             [_jsDrone cancelDownloadMedias];
-                                                         }];
-    [_downloadAlertController addAction:cancelAction];
-    
-    
-    UIViewController *customVC = [[UIViewController alloc] init];
-    UIActivityIndicatorView* spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    [spinner startAnimating];
-    [customVC.view addSubview:spinner];
-    
-    [customVC.view addConstraint:[NSLayoutConstraint
-                                  constraintWithItem: spinner
-                                  attribute:NSLayoutAttributeCenterX
-                                  relatedBy:NSLayoutRelationEqual
-                                  toItem:customVC.view
-                                  attribute:NSLayoutAttributeCenterX
-                                  multiplier:1.0f
-                                  constant:0.0f]];
-    [customVC.view addConstraint:[NSLayoutConstraint
-                                  constraintWithItem:spinner
-                                  attribute:NSLayoutAttributeBottom
-                                  relatedBy:NSLayoutRelationEqual
-                                  toItem:customVC.bottomLayoutGuide
-                                  attribute:NSLayoutAttributeTop
-                                  multiplier:1.0f
-                                  constant:-20.0f]];
-    
-    
-    [_downloadAlertController setValue:customVC forKey:@"contentViewController"];
-    
-    [self presentViewController:_downloadAlertController animated:YES completion:nil];
-    
-    [_jsDrone downloadMedias];
 }
 
 - (IBAction)turnLeftTouchDown:(id)sender {
@@ -316,29 +216,6 @@ typedef enum {
 - (IBAction)backwardTouchUp:(id)sender {
     [_jsDrone setFlag:0];
     [_jsDrone setSpeed:0];
-}
-
-- (IBAction)audioClicked:(id)sender {
-    switch (_audioState) {
-        case AUDIO_STATE_MUTE:
-            [self setAudioState:AUDIO_STATE_INPUT];
-            break;
-        case AUDIO_STATE_INPUT:
-            if([_jsDrone hasOutputAudioStream]) {
-                [self setAudioState:AUDIO_STATE_BIDIRECTIONAL];
-            } else {
-                [self setAudioState:AUDIO_STATE_MUTE];
-            }
-            break;
-        case AUDIO_STATE_BIDIRECTIONAL:
-            [self setAudioState:AUDIO_STATE_MUTE];
-            break;
-    }
-}
-
-- (void)audioStreamAUBackend:(AudioStreamAUBackend*)backend didAcquireNewBuffer:(uint8_t*)buf withSize:(size_t)size
-{
-    [_jsDrone sendAudioStreamFrame:buf withSize:size];
 }
 
 @end

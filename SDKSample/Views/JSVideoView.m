@@ -6,7 +6,6 @@
 #import "JSVideoView.h"
 #import <AVFoundation/AVFoundation.h>
 #import <VideoToolbox/VideoToolbox.h>
-#import "QRScannerService.h"
 
 @interface JSVideoView ()
 
@@ -55,7 +54,6 @@
     
     dispatch_sync(dispatch_get_main_queue(), ^{
         self.image = image;
-        [[[QRScannerService alloc] init] scanAction:self.image];
     });
     
     return success;
