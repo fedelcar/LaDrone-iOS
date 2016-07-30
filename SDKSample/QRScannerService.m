@@ -44,18 +44,25 @@
     // result.rawBytes and result.length.
     NSString *contents = result.text;
     
-    if ([contents isEqualToString:@"F1"]) {
+    if ([contents isEqualToString:@"foward"]) {
         return Forward;
     }
-    if ([contents isEqualToString:@"F2"]) {
-        return Backward;
-    }
-    if ([contents isEqualToString:@"Diamond1"]) {
+    if ([contents isEqualToString:@"left"]) {
         return TurnLeft;
     }
-    if ([contents isEqualToString:@"Diamond2"]) {
+    if ([contents isEqualToString:@"right"]) {
         return TurnRight;
     }
+    if ([contents isEqualToString:@"fire"]) {
+        return Fire;
+    }
+    if ([contents isEqualToString:@"repeat_4"]) {
+        return Repeat4;
+    }
+    if ([contents isEqualToString:@"function_1"]) {
+        return Repeat4;
+    }
+
     return Unknown;
 }
 

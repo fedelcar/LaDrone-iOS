@@ -111,31 +111,22 @@ typedef enum {
     UIImage *image = [UIImage imageWithData:imgData];
     DroneCommand command = [[[QRScannerService alloc] init] scanAction:image];
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//        if (command == Forward) {
-//            [self forwardTouchDown:nil];
-//            [NSThread sleepForTimeInterval:1.0f];
-//            [self forwardTouchUp:nil];
-//        } else if (command == Backward) {
-//            [self backwardTouchDown:nil];
-//            [NSThread sleepForTimeInterval:1.0f];
-//            [self backwardTouchUp:nil];
-//        } else if (command == TurnLeft) {
-//            [self turnLeftTouchDown:nil];
-//            [NSThread sleepForTimeInterval:1.0f];
-//            [self turnLeftTouchUp:nil];
-//        } else if (command == TurnRight) {
-//            [self turnRightTouchDown:nil];
-//            [NSThread sleepForTimeInterval:1.0f];
-//            [self turnRightTouchUp:nil];
-//        }
-        if (command != Unknown) {
-            [self turnLeftTouchDown:nil];
-            [NSThread sleepForTimeInterval:0.225f];
-            [self turnLeftTouchUp:nil];
-            [NSThread sleepForTimeInterval:1.0f];
+        if (command == Forward) {
             [self forwardTouchDown:nil];
             [NSThread sleepForTimeInterval:1.0f];
             [self forwardTouchUp:nil];
+        } else if (command == Backward) {
+            [self backwardTouchDown:nil];
+            [NSThread sleepForTimeInterval:1.0f];
+            [self backwardTouchUp:nil];
+        } else if (command == TurnLeft) {
+            [self turnLeftTouchDown:nil];
+            [NSThread sleepForTimeInterval:1.0f];
+            [self turnLeftTouchUp:nil];
+        } else if (command == TurnRight) {
+            [self turnRightTouchDown:nil];
+            [NSThread sleepForTimeInterval:1.0f];
+            [self turnRightTouchUp:nil];
         }
     });
     return [_videoView displayFrame:frame];

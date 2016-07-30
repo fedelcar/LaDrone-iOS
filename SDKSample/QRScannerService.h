@@ -13,7 +13,9 @@ typedef enum {
     TurnLeft,
     TurnRight,
     Forward,
-    Backward,
+    Fire,
+    Repeat4,
+    Function1,
     Unknown
 } DroneCommand;
 
