@@ -263,8 +263,31 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"HEADER_SEARCH_PATHS[sdk=iphoneos*]" = "$(PROJECT_DIR)/LaDrone/Dependencies/iOS-iphoneos/staging/usr/include";
+				"HEADER_SEARCH_PATHS[sdk=iphonesimulator*]" = "$(PROJECT_DIR)/LaDrone/Dependencies/iOS-iphonesimulator/staging/usr/include";
 				INFOPLIST_FILE = LaDrone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				"LIBRARY_SEARCH_PATHS[sdk=iphoneos*]" = "$(PROJECT_DIR)/LaDrone/Dependencies/iOS-iphoneos/staging/usr/include";
+				"LIBRARY_SEARCH_PATHS[sdk=iphonesimulator*]" = "$(PROJECT_DIR)/LaDrone/Dependencies/iOS-iphonesimulator/staging/usr/include";
+				OTHER_LDFLAGS = (
+					"-larcommands",
+					"-larcontroller",
+					"-lardiscovery",
+					"-larnetwork",
+					"-larnetworkal",
+					"-larsal",
+					"-larstream",
+					"-larstream2",
+					"-larmavlink",
+					"-ljson",
+					"-larmedia",
+					"-larutils",
+					"-lcurl",
+					"-lardatatransfer",
+					"-lcrypto",
+					"-lssl",
+					"-lz",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = LD.LaDrone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -274,8 +297,31 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"HEADER_SEARCH_PATHS[sdk=iphoneos*]" = "$(PROJECT_DIR)/LaDrone/Dependencies/iOS-iphoneos/staging/usr/include";
+				"HEADER_SEARCH_PATHS[sdk=iphonesimulator*]" = "$(PROJECT_DIR)/LaDrone/Dependencies/iOS-iphonesimulator/staging/usr/include";
 				INFOPLIST_FILE = LaDrone/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				"LIBRARY_SEARCH_PATHS[sdk=iphoneos*]" = "$(PROJECT_DIR)/LaDrone/Dependencies/iOS-iphoneos/staging/usr/include";
+				"LIBRARY_SEARCH_PATHS[sdk=iphonesimulator*]" = "$(PROJECT_DIR)/LaDrone/Dependencies/iOS-iphonesimulator/staging/usr/include";
+				OTHER_LDFLAGS = (
+					"-larcommands",
+					"-larcontroller",
+					"-lardiscovery",
+					"-larnetwork",
+					"-larnetworkal",
+					"-larsal",
+					"-larstream",
+					"-larstream2",
+					"-larmavlink",
+					"-ljson",
+					"-larmedia",
+					"-larutils",
+					"-lcurl",
+					"-lardatatransfer",
+					"-lcrypto",
+					"-lssl",
+					"-lz",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = LD.LaDrone;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -300,6 +346,7 @@
 				3144DB7C1D4CE0D70040241A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
