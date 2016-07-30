@@ -57,10 +57,25 @@
 
 - (void)takePicture {
     QRScannerService * scanner = [[QRScannerService alloc] init];
-    UIImage * image = self.photoImageView.image;
+    UIImage * image = [self getCurrentDrawingImage];
     if (image) {
+        self.imageView2.image = image;
         [scanner scanAction:image];
     }
+}
+
+- (UIImage *)getCurrentDrawingImage {
+//    UIImage * image;
+//    UIGraphicsBeginImageContextWithOptions(self.photoImageView.frame.size, NO, 0.0f);
+//    [self.view drawViewHierarchyInRect:self.photoImageView.bounds afterScreenUpdates:NO];
+//    image = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    return image;
+    UIGraphicsBeginImageContext(self.photoImageView.bounds.size);
+    [self.photoImageView.layer drawInContext:UIGraphicsGetCurrentContext()];
+    UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return img;
 }
 
 @end

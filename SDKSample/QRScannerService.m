@@ -44,7 +44,7 @@
         NSLog(@"Encontramos: %@", contents);
         
         // The barcode format, such as a QR code or UPC-A
-        ZXBarcodeFormat format = result.barcodeFormat;
+//        ZXBarcodeFormat format = result.barcodeFormat;
     } else {
         // Use error to determine why we didn't get a result, such as a barcode
         // not being found, an invalid checksum, or a format inconsistency.
