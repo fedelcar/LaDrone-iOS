@@ -64,19 +64,19 @@
     if ([contents isEqualToString:@"forward"] || [contents isEqualToString:@"foward"] || [contents isEqualToString:@"fowad"]) {
         return Forward;
     }
-    if ([contents isEqualToString:@"left"]) {
+    if ([contents isEqualToString:@"left   "]) {
         return TurnLeft;
     }
-    if ([contents isEqualToString:@"right"]) {
+    if ([contents isEqualToString:@"right  "]) {
         return TurnRight;
     }
-    if ([contents isEqualToString:@"fire"]) {
+    if ([contents isEqualToString:@"fire   "]) {
         return Fire;
     }
-    if ([contents isEqualToString:@"repeat_4"]) {
+    if ([contents isEqualToString:@"repet  "]) {
         return Repeat4;
     }
-    if ([contents isEqualToString:@"function_1"]) {
+    if ([contents isEqualToString:@"function"]) {
         return Repeat4;
     }
 
