@@ -184,11 +184,24 @@ typedef enum {
             case Fire:
                 [self doFire];
                 [self doForward];
+                break;
 //                [NSThread sleepForTimeInterval:0.5f];
             case Repeat4:
                 _repeatCount = 4;
                 _running = NO;
+                break;
             case Function1:
+                [self doForward];
+                [NSThread sleepForTimeInterval:1.5f];
+                [self doForward];
+                [NSThread sleepForTimeInterval:1.5f];
+                [self doForward];
+                [NSThread sleepForTimeInterval:1.5f];
+                [self doTrulyTurnRight];
+                [NSThread sleepForTimeInterval:1.5f];
+                [self doForward];
+                _running = NO;
+                break;
             default:
                 break;
         }
@@ -218,10 +231,19 @@ typedef enum {
 // Drone Actions
 
 
-- (void)doTrulyTurnLeft{
+- (void)doTrulyTurnLeft {
     [self doPreHalfForward];
     //                [NSThread sleepForTimeInterval:1.5f];
     [self doTurnLeft];
+    //                [NSThread sleepForTimeInterval:1.5f];
+    [self doPreHalfForward];
+    //                [NSThread sleepForTimeInterval:1.5f];
+}
+
+- (void)doTrulyTurnRight {
+    [self doPreHalfForward];
+    //                [NSThread sleepForTimeInterval:1.5f];
+    [self doTurnRight];
     //                [NSThread sleepForTimeInterval:1.5f];
     [self doPreHalfForward];
     //                [NSThread sleepForTimeInterval:1.5f];

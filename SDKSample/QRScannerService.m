@@ -76,8 +76,8 @@
     if ([contents isEqualToString:@"repet  "]) {
         return Repeat4;
     }
-    if ([contents isEqualToString:@"function"]) {
-        return Repeat4;
+    if ([contents isEqualToString:@"funcion"]) {
+        return Function1;
     }
 
     return Unknown;
