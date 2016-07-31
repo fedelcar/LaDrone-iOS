@@ -195,6 +195,7 @@ typedef enum {
                 [NSThread sleepForTimeInterval:1.5f];
                 [self doForward];
                 [NSThread sleepForTimeInterval:1.5f];
+                [self doFireAnimation];
                 [self doForward];
                 [NSThread sleepForTimeInterval:1.5f];
                 [self doTrulyTurnRight];
@@ -313,6 +314,12 @@ typedef enum {
     [NSThread sleepForTimeInterval:1.00f];
     [_jsDrone setFlag:0];
     [_jsDrone setTurn:0];
+}
+
+- (void)doFireAnimation {
+    self.commandImageView.image = [UIImageProvider imageForCommand:Fire];
+    [NSThread sleepForTimeInterval:1.5f];
+    self.commandImageView.image = [UIImageProvider imageForCommand:Function1];
 }
 
 - (void)doWin {
