@@ -202,7 +202,7 @@ typedef enum {
                 [self doForward];
                 [self handleCommandImageView:Function1];
                 [NSThread sleepForTimeInterval:1.5f];
-                [self doTrulyTurnRight];
+                [self doTurnRight];
                 [self handleCommandImageView:Function1];
                 [NSThread sleepForTimeInterval:1.5f];
                 [self doForward];
