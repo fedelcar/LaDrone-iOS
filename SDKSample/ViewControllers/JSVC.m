@@ -110,6 +110,7 @@ typedef enum {
     return [_videoView configureDecoder:codec];
 }
 
+
 - (BOOL)jsDrone:(JSDrone*)jsDrone didReceiveFrame:(ARCONTROLLER_Frame_t*)frame {
     NSData *imgData = [NSData dataWithBytes:frame->data length:frame->used];
     UIImage *image = [UIImage imageWithData:imgData];
@@ -165,29 +166,27 @@ typedef enum {
                 _running = NO;
                 break;
             case TurnLeft:
+                [self doPreHalfForward];
+//                [NSThread sleepForTimeInterval:1.5f];
                 [self doTurnLeft];
+//                [NSThread sleepForTimeInterval:1.5f];
+                [self doPreHalfForward];
+//                [NSThread sleepForTimeInterval:1.5f];
                 _running = NO;
                 break;
             case TurnRight:
                 [self doPreHalfForward];
-                [NSThread sleepForTimeInterval:1.0f];
+//                [NSThread sleepForTimeInterval:1.5f];
                 [self doTurnRight];
-                [NSThread sleepForTimeInterval:0.75f];
-                [self doPostHalfForward];
+//                [NSThread sleepForTimeInterval:1.5f];
+                [self doPreHalfForward];
+//                [NSThread sleepForTimeInterval:1.5f];
                 _running = NO;
                 break;
             case Fire:
+                [self doFire];
                 [self doForward];
-                [NSThread sleepForTimeInterval:0.5f];
-                [self doForward];
-                [NSThread sleepForTimeInterval:0.5f];
-                [self doForward];
-                [NSThread sleepForTimeInterval:0.5f];
-                [self doTurnRight];
-                [NSThread sleepForTimeInterval:0.5f];
-                [self doForward];
-                [NSThread sleepForTimeInterval:0.5f];
-                [self doForward];
+//                [NSThread sleepForTimeInterval:0.5f];
             case Repeat4:
                 for (int i = 0; i < 4; i++) {
                     [self doForward];
@@ -216,9 +215,9 @@ typedef enum {
 // Drone Actions
 
 - (void)doPreHalfForward {
-    [_jsDrone setSpeed:19];
+    [_jsDrone setSpeed:17];
     [_jsDrone setFlag:1];
-    [NSThread sleepForTimeInterval:0.70f];
+    [NSThread sleepForTimeInterval:0.8f];
     [_jsDrone setSpeed:0];
     [_jsDrone setFlag:0];
 }
@@ -226,13 +225,22 @@ typedef enum {
 - (void)doPostHalfForward {
     [_jsDrone setSpeed:16];
     [_jsDrone setFlag:1];
-    [NSThread sleepForTimeInterval:0.70f];
+    [NSThread sleepForTimeInterval:0.2f];
+    [_jsDrone setSpeed:16];
+    [_jsDrone setFlag:1];
+    [NSThread sleepForTimeInterval:0.3f];
+    [_jsDrone setSpeed:16];
+    [_jsDrone setFlag:1];
+    [NSThread sleepForTimeInterval:0.3f];
+    [_jsDrone setSpeed:16];
+    [_jsDrone setFlag:1];
+    [NSThread sleepForTimeInterval:0.3f];
     [_jsDrone setSpeed:0];
     [_jsDrone setFlag:0];
 }
 
 - (void)doForward {
-    [_jsDrone setSpeed:21];
+    [_jsDrone setSpeed:20];
     [_jsDrone setFlag:1];
     [NSThread sleepForTimeInterval:1.0f];
     [_jsDrone setSpeed:0];
@@ -240,17 +248,51 @@ typedef enum {
 }
 
 - (void)doTurnRight {
-    [_jsDrone setTurn:50/4.0];
+    [_jsDrone setTurn:12];
     [_jsDrone setFlag:1];
-    [NSThread sleepForTimeInterval:1.0f];
+    [NSThread sleepForTimeInterval:1.05f];
     [_jsDrone setFlag:0];
     [_jsDrone setTurn:0];
 }
 
 - (void)doTurnLeft {
-    [_jsDrone setTurn:-50/4.0];
+    [_jsDrone setTurn:-12];
     [_jsDrone setFlag:1];
-    [NSThread sleepForTimeInterval:1.0f];
+    [NSThread sleepForTimeInterval:1.05f];
+    [_jsDrone setFlag:0];
+    [_jsDrone setTurn:0];
+}
+
+- (void)doFire {
+    [_jsDrone setTurn:6];
+    [_jsDrone setFlag:1];
+    [NSThread sleepForTimeInterval:1.00f];
+    [_jsDrone setTurn:-6];
+    [_jsDrone setFlag:1];
+    [NSThread sleepForTimeInterval:1.00f];
+    [_jsDrone setTurn:-6];
+    [_jsDrone setFlag:1];
+    [NSThread sleepForTimeInterval:1.00f];
+    [_jsDrone setTurn:6];
+    [_jsDrone setFlag:1];
+    [NSThread sleepForTimeInterval:1.00f];
+    [_jsDrone setFlag:0];
+    [_jsDrone setTurn:0];
+}
+
+- (void)doWin {
+    [_jsDrone setTurn:60];
+    [_jsDrone setFlag:1];
+    [NSThread sleepForTimeInterval:1.00f];
+    [_jsDrone setTurn:-60];
+    [_jsDrone setFlag:1];
+    [NSThread sleepForTimeInterval:1.00f];
+    [_jsDrone setTurn:-60];
+    [_jsDrone setFlag:1];
+    [NSThread sleepForTimeInterval:1.00f];
+    [_jsDrone setTurn:60];
+    [_jsDrone setFlag:1];
+    [NSThread sleepForTimeInterval:1.00f];
     [_jsDrone setFlag:0];
     [_jsDrone setTurn:0];
 }
