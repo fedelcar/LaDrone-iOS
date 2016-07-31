@@ -169,7 +169,11 @@ typedef enum {
                 _running = NO;
                 break;
             case TurnRight:
+                [self doPreHalfForward];
+                [NSThread sleepForTimeInterval:1.0f];
                 [self doTurnRight];
+                [NSThread sleepForTimeInterval:0.75f];
+                [self doPostHalfForward];
                 _running = NO;
                 break;
             case Fire:
@@ -211,8 +215,24 @@ typedef enum {
 
 // Drone Actions
 
+- (void)doPreHalfForward {
+    [_jsDrone setSpeed:19];
+    [_jsDrone setFlag:1];
+    [NSThread sleepForTimeInterval:0.70f];
+    [_jsDrone setSpeed:0];
+    [_jsDrone setFlag:0];
+}
+
+- (void)doPostHalfForward {
+    [_jsDrone setSpeed:16];
+    [_jsDrone setFlag:1];
+    [NSThread sleepForTimeInterval:0.70f];
+    [_jsDrone setSpeed:0];
+    [_jsDrone setFlag:0];
+}
+
 - (void)doForward {
-    [_jsDrone setSpeed:25];
+    [_jsDrone setSpeed:21];
     [_jsDrone setFlag:1];
     [NSThread sleepForTimeInterval:1.0f];
     [_jsDrone setSpeed:0];
