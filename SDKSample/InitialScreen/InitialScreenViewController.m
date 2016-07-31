@@ -7,12 +7,20 @@
 //
 
 #import "InitialScreenViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface InitialScreenViewController ()
+
+@property (nonatomic, weak) IBOutlet UIButton * button;
 
 @end
 
 @implementation InitialScreenViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [[self.button layer] setBorderColor:[UIColor whiteColor].CGColor];
+}
 
 - (IBAction)startGamePressed:(id)sender {
     UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];

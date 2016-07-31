@@ -17,7 +17,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cvL-Qz-elN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="InitialScreenBackground" translatesAutoresizingMaskIntoConstraints="NO" id="yMb-MS-JpM">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" red="0.97254901960784312" green="0.63137254901960782" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cvL-Qz-elN">
                                 <rect key="frame" x="200" y="540" width="200" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="M3O-Uc-rxf"/>
@@ -25,22 +29,41 @@
                                 </constraints>
                                 <state key="normal" title="Start Game">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="startGamePressed:" destination="klO-vd-gRE" eventType="touchUpInside" id="EZV-PU-hmS"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.94117647059999998" green="0.4941176471" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="cvL-Qz-elN" firstAttribute="centerX" secondItem="iqs-El-Frg" secondAttribute="centerX" id="AE0-Ee-hc5"/>
+                            <constraint firstItem="6dH-z4-67A" firstAttribute="top" secondItem="yMb-MS-JpM" secondAttribute="bottom" id="ORf-42-v67"/>
                             <constraint firstItem="6dH-z4-67A" firstAttribute="top" secondItem="cvL-Qz-elN" secondAttribute="bottom" constant="20" id="Yk8-7t-pRl"/>
+                            <constraint firstAttribute="trailing" secondItem="yMb-MS-JpM" secondAttribute="trailing" id="bkD-Pm-OUq"/>
+                            <constraint firstItem="yMb-MS-JpM" firstAttribute="top" secondItem="iqs-El-Frg" secondAttribute="top" id="jii-Tf-nFg"/>
+                            <constraint firstItem="yMb-MS-JpM" firstAttribute="leading" secondItem="iqs-El-Frg" secondAttribute="leading" id="maK-jC-eFL"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="button" destination="cvL-Qz-elN" id="DrI-jd-Jtl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2nb-e4-khv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="329" y="299"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="InitialScreenBackground" width="750" height="1334"/>
+    </resources>
 </document>
