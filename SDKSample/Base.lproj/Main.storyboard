@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="cdJ-MM-fkQ" kind="relationship" relationship="rootViewController" id="p65-6j-ITb"/>
+                        <segue destination="P0c-eM-CwN" kind="relationship" relationship="rootViewController" id="9bl-Fe-s3w"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Yc-tX-S6u" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -280,7 +280,4 @@
     <resources>
         <image name="Map" width="264" height="264"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="p65-6j-ITb"/>
-    </inferredMetricsTieBreakers>
 </document>
