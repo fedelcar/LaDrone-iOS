@@ -59,6 +59,7 @@
     // The coded result as a string. The raw data can be accessed with
     // result.rawBytes and result.length.
     NSString *contents = result.text;
+    NSLog(@"Decoded: %@", contents);
     
     if ([contents isEqualToString:@"forward"] || [contents isEqualToString:@"foward"] || [contents isEqualToString:@"fowad"]) {
         return Forward;
