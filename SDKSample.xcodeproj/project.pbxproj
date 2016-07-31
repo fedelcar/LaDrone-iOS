@@ -723,7 +723,7 @@
 		F828FA721C860BEB0075E867 /* JSVideoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JSVideoView.m; path = Views/JSVideoView.m; sourceTree = "<group>"; };
 		F8838E671C80A51200B49443 /* SDCardModule.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SDCardModule.h; path = Drones/SDCardModule.h; sourceTree = "<group>"; };
 		F8838E681C80A51200B49443 /* SDCardModule.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SDCardModule.m; path = Drones/SDCardModule.m; sourceTree = "<group>"; };
-		F8B03D831C7DA4E900149B4F /* SDKSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDKSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8B03D831C7DA4E900149B4F /* LaDrone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LaDrone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8B03D871C7DA4E900149B4F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F8B03D891C7DA4E900149B4F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F8B03D8A1C7DA4E900149B4F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -1498,7 +1498,7 @@
 		F8B03D841C7DA4E900149B4F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F8B03D831C7DA4E900149B4F /* SDKSample.app */,
+				F8B03D831C7DA4E900149B4F /* LaDrone.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1596,7 +1596,7 @@
 			);
 			name = SDKSample;
 			productName = SDKSample;
-			productReference = F8B03D831C7DA4E900149B4F /* SDKSample.app */;
+			productReference = F8B03D831C7DA4E900149B4F /* LaDrone.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -2001,7 +2001,7 @@
 					"-lssl",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.parrot.SDKSample;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = LaDrone;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = DebugWithLocalSDK;
@@ -2121,7 +2121,7 @@
 					"-lssl",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.parrot.SDKSample;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = LaDrone;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = DebugWithPrecompiledSDK;
@@ -2159,7 +2159,7 @@
 					"-lssl",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.parrot.SDKSample;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = LaDrone;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
