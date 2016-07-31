@@ -32,6 +32,7 @@ typedef enum {
 @property (nonatomic, assign) eAUDIO_STATE audioState;
 
 @property (nonatomic) BOOL running;
+@property (nonatomic) int repeatCount;
 
 @property (nonatomic, strong) IBOutlet JSVideoView *videoView;
 @property (nonatomic, strong) IBOutlet UILabel *batteryLabel;
@@ -43,7 +44,7 @@ typedef enum {
 
 -(void)viewDidLoad {
     _stateSem = dispatch_semaphore_create(0);
-    
+    _repeatCount = 0;
     _jsDrone = [[JSDrone alloc] initWithService:_service];
     [_jsDrone setDelegate:self];
     [_jsDrone connect];
@@ -54,9 +55,11 @@ typedef enum {
 }
 
 - (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
     if ([_jsDrone connectionState] != ARCONTROLLER_DEVICE_STATE_RUNNING) {
         [_connectionAlertView show];
     }
+    [UIViewController attemptRotationToDeviceOrientation];
 }
 
 - (void) viewDidDisappear:(BOOL)animated
@@ -166,12 +169,7 @@ typedef enum {
                 _running = NO;
                 break;
             case TurnLeft:
-                [self doPreHalfForward];
-//                [NSThread sleepForTimeInterval:1.5f];
-                [self doTurnLeft];
-//                [NSThread sleepForTimeInterval:1.5f];
-                [self doPreHalfForward];
-//                [NSThread sleepForTimeInterval:1.5f];
+                [self doTrulyTurnLeft];
                 _running = NO;
                 break;
             case TurnRight:
@@ -188,15 +186,20 @@ typedef enum {
                 [self doForward];
 //                [NSThread sleepForTimeInterval:0.5f];
             case Repeat4:
-                for (int i = 0; i < 4; i++) {
-                    [self doForward];
-                }
+                _repeatCount = 4;
                 _running = NO;
             case Function1:
             default:
                 break;
         }
     }
+}
+
+- (void)readAndRepeatCommand:(DroneCommand)command{
+        [self handleCommand:command];
+        _running = NO;
+        _repeatCount --;
+    
 }
 
 - (void)handleCommandImageView:(DroneCommand)command {
@@ -213,6 +216,16 @@ typedef enum {
 }
 
 // Drone Actions
+
+
+- (void)doTrulyTurnLeft{
+    [self doPreHalfForward];
+    //                [NSThread sleepForTimeInterval:1.5f];
+    [self doTurnLeft];
+    //                [NSThread sleepForTimeInterval:1.5f];
+    [self doPreHalfForward];
+    //                [NSThread sleepForTimeInterval:1.5f];
+}
 
 - (void)doPreHalfForward {
     [_jsDrone setSpeed:17];
