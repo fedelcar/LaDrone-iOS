@@ -114,10 +114,7 @@ typedef enum {
     NSData *imgData = [NSData dataWithBytes:frame->data length:frame->used];
     UIImage *image = [UIImage imageWithData:imgData];
     DroneCommand command = [[[QRScannerService alloc] init] scanAction:image];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self handleCommand:command];
-        [self handleCommandImageView:command];
-    });
+    [self handleCommand:command];
     return [_videoView displayFrame:frame];
 }
 
@@ -153,6 +150,13 @@ typedef enum {
 }
 
 - (void)handleCommand:(DroneCommand)command {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self handleCommandAction:command];
+        [self handleCommandImageView:command];
+    });
+}
+
+- (void)handleCommandAction:(DroneCommand)command {
     if (!_running && command != Unknown) {
         _running = YES;
         switch (command) {
@@ -229,6 +233,18 @@ typedef enum {
     [NSThread sleepForTimeInterval:1.0f];
     [_jsDrone setFlag:0];
     [_jsDrone setTurn:0];
+}
+
+- (IBAction)forwardPressed:(id)sender {
+    [self handleCommand:Forward];
+}
+
+- (IBAction)turnRightPressed:(id)sender {
+    [self handleCommand:TurnRight];
+}
+
+- (IBAction)turnLeftPressed:(id)sender {
+    [self handleCommand:TurnLeft];
 }
 
 @end

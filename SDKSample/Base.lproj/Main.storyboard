@@ -160,6 +160,36 @@
                                             <constraint firstAttribute="width" constant="100" id="ANq-vg-MD9"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9vO-4Y-9fu">
+                                        <rect key="frame" x="492" y="18" width="100" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="VSq-m6-XqU"/>
+                                            <constraint firstAttribute="width" constant="100" id="lgL-W5-WLW"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="forwardPressed:" destination="cdJ-MM-fkQ" eventType="touchUpInside" id="LWA-pk-f49"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vGA-t6-PFB">
+                                        <rect key="frame" x="492" y="59" width="46" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="HDm-xl-XDO"/>
+                                            <constraint firstAttribute="height" constant="40" id="l4a-wP-6ak"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="turnLeftPressed:" destination="cdJ-MM-fkQ" eventType="touchUpInside" id="kP0-n0-ZGc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="81q-LM-x0g">
+                                        <rect key="frame" x="546" y="59" width="46" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="Sc1-DR-bdb"/>
+                                            <constraint firstAttribute="height" constant="40" id="eoW-6P-8GM"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="turnRightPressed:" destination="cdJ-MM-fkQ" eventType="touchUpInside" id="VsC-8Y-cO6"/>
+                                        </connections>
+                                    </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UWX-r6-awU">
                                         <rect key="frame" x="492" y="428" width="100" height="100"/>
                                         <constraints>
@@ -172,11 +202,17 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstItem="vGA-t6-PFB" firstAttribute="top" secondItem="9vO-4Y-9fu" secondAttribute="bottom" constant="1" id="1G6-JW-S4S"/>
+                                    <constraint firstAttribute="trailing" secondItem="81q-LM-x0g" secondAttribute="trailing" constant="8" id="2x4-7r-Uyf"/>
+                                    <constraint firstItem="9vO-4Y-9fu" firstAttribute="top" secondItem="CNP-rT-Nfa" secondAttribute="top" constant="18" id="864-5v-eaZ"/>
+                                    <constraint firstItem="81q-LM-x0g" firstAttribute="top" secondItem="9vO-4Y-9fu" secondAttribute="bottom" constant="1" id="Czv-jp-mq7"/>
                                     <constraint firstItem="QfL-o9-AWD" firstAttribute="top" secondItem="CNP-rT-Nfa" secondAttribute="top" constant="8" id="D9W-Jn-pY0"/>
+                                    <constraint firstAttribute="trailing" secondItem="9vO-4Y-9fu" secondAttribute="trailing" constant="8" id="HWX-nH-GGT"/>
                                     <constraint firstAttribute="bottom" secondItem="UWX-r6-awU" secondAttribute="bottom" constant="8" id="NBO-HN-gVe"/>
                                     <constraint firstAttribute="trailing" secondItem="QfL-o9-AWD" secondAttribute="trailing" constant="8" id="Xbh-5K-G31"/>
                                     <constraint firstAttribute="width" secondItem="CNP-rT-Nfa" secondAttribute="height" multiplier="4:3" id="cmd-eb-3JE"/>
                                     <constraint firstAttribute="trailing" secondItem="UWX-r6-awU" secondAttribute="trailing" constant="8" id="khL-2u-Twg"/>
+                                    <constraint firstItem="81q-LM-x0g" firstAttribute="leading" secondItem="vGA-t6-PFB" secondAttribute="trailing" constant="8" id="qcP-ZT-tc9"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
