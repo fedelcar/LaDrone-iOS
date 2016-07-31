@@ -155,8 +155,8 @@ typedef enum {
 
 - (void)handleCommand:(DroneCommand)command {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self handleCommandAction:command];
         [self handleCommandImageView:command];
+        [self handleCommandAction:command];
     });
 }
 
@@ -192,15 +192,21 @@ typedef enum {
                 break;
             case Function1:
                 [self doForward];
+                [self handleCommandImageView:Function1];
                 [NSThread sleepForTimeInterval:1.5f];
                 [self doForward];
+                [self handleCommandImageView:Function1];
                 [NSThread sleepForTimeInterval:1.5f];
-                [self doFireAnimation];
+                [self handleCommandImageView:Fire];
+                [NSThread sleepForTimeInterval:1.5f];
                 [self doForward];
+                [self handleCommandImageView:Function1];
                 [NSThread sleepForTimeInterval:1.5f];
                 [self doTrulyTurnRight];
+                [self handleCommandImageView:Function1];
                 [NSThread sleepForTimeInterval:1.5f];
                 [self doForward];
+                [self handleCommandImageView:Function1];
                 _running = NO;
                 break;
             default:
@@ -317,7 +323,7 @@ typedef enum {
 }
 
 - (void)doFireAnimation {
-    self.commandImageView.image = [UIImageProvider imageForCommand:Fire];
+    [self.commandImageView setImage:[UIImageProvider imageForCommand:Fire]];
     [NSThread sleepForTimeInterval:1.5f];
     self.commandImageView.image = [UIImageProvider imageForCommand:Function1];
 }
