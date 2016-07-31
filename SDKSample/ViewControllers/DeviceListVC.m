@@ -113,6 +113,8 @@
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+        cell.backgroundColor = [UIColor colorWithRed:248.0/255.0 green:161.0/255.0 blue:50.0/255.0 alpha:1.0];
+        cell.textLabel.textColor = [UIColor whiteColor];
     }
     
     cell.textLabel.text = ((ARService*)[_dataSource objectAtIndex:indexPath.row]).name;
@@ -145,4 +147,5 @@
             break;
     }
 }
+
 @end
