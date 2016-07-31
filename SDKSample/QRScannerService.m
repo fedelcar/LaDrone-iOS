@@ -60,7 +60,7 @@
     // result.rawBytes and result.length.
     NSString *contents = result.text;
     
-    if ([contents isEqualToString:@"foward"]) {
+    if ([contents isEqualToString:@"forward"] || [contents isEqualToString:@"foward"] || [contents isEqualToString:@"fowad"]) {
         return Forward;
     }
     if ([contents isEqualToString:@"left"]) {
